@@ -23,6 +23,7 @@
         <div>
             <label for="email">Email Input Type :   </label>
             <input type="email" id="email" name="email">
+            <error-output for="email" class="email-error"></error-output>
         </div><br>
         <div>
             <label for="url">URL Input for Name : </label>
@@ -35,6 +36,7 @@
         <div>
             <label for="tel">Tel input Type : </label>
             <input type="tel" id="tel" name="tel">
+            <error-output for="tel" class="tel-error"></error-output>
         </div><br>
         <div>
             <label for="search">serach input Type : </label>
@@ -68,7 +70,7 @@
         const nameTextError=document.querySelector('.name-error')
         nameText.addEventListener('input',function(){
             let nameRegex=RegExp('^[A-Z]{1}[a-z]{2,}$')
-            
+            console.log(nameText);
             if(nameRegex.test(nameText.value))
                 nameTextError.textContent=' ';
             else
@@ -79,16 +81,26 @@
         //But input field email type has its own validation
         //there is no need of regex for validation
         const email = document.querySelector('#email');
-            const emailError = document.querySelector('.email-error');
-            email.addEventListener('input',function(){
-               let pattern = RegExp('^(?!\\.)[A-Za-z0-9]+([._%+-]?[0-9])*@[A-Za-z0-9-]+\\.[a-zA-Z]{2,6}(\\.[A-Za-z]{2,6})?$');
-               console.log(email);
-               if(pattern.test(email.value))
-                    emailError.textContent='';
-                else
-                    emailError.textContent="Invalid Email";
-            });
-
+        const emailError = document.querySelector('.email-error');
+        email.addEventListener('input',function(){
+            let pattern = RegExp('^[A-Z a-z]{1,}([+-_.]*)[A-Z a-z 0-9 _+-.]*[@]{1}[A-Z a-z 0-9 +_-]{1,}[.]{1}[a-z]{2,3}([.]{1}[a-z]{2})*$');
+            console.log(email);
+            if(pattern.test(email.value))
+                emailError.textContent='';
+            else
+                emailError.textContent="Invalid Email";
+        });
+        
+        //Mobile number validation
+        const number = document.querySelector('#tel');
+        const numberError = document.querySelector('.tel-error');
+        number.addEventListener('input', function () {
+            let numberRegex = RegExp('^[1-9]{2}\\s{0,1}[1-9]{1}[0-9]{9}$');
+            if (numberRegex.test(number.value))
+                numberError.textContent = ' ';
+            else
+                numberError.textContent = 'Invalid Number!';
+        });        
     </script>
 </body>
 </html>

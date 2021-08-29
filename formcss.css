@@ -6,6 +6,8 @@ body{
     max-width: 600px;
     margin: 0 auto;
     padding: 2em;
+    border: 2px solid gray;
+    padding-top: 2px ;
 }
 form{
     margin-top: 50px;
