@@ -63,6 +63,7 @@
             console.log(salaryOutput.textContent);
         }); 
 
+        //Name validation
         const nameText=document.querySelector('#name');
         const nameTextError=document.querySelector('.name-error')
         nameText.addEventListener('input',function(){
@@ -73,7 +74,21 @@
             else
                 nameTextError.textContent='Name invalid'
         });
-       
+        
+        //Email validation
+        //But input field email type has its own validation
+        //there is no need of regex for validation
+        const email = document.querySelector('#email');
+            const emailError = document.querySelector('.email-error');
+            email.addEventListener('input',function(){
+               let pattern = RegExp('^(?!\\.)[A-Za-z0-9]+([._%+-]?[0-9])*@[A-Za-z0-9-]+\\.[a-zA-Z]{2,6}(\\.[A-Za-z]{2,6})?$');
+               console.log(email);
+               if(pattern.test(email.value))
+                    emailError.textContent='';
+                else
+                    emailError.textContent="Invalid Email";
+            });
+
     </script>
 </body>
 </html>
